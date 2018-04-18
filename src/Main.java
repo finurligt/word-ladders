@@ -4,7 +4,7 @@ class Main {
     public static void main(String[] args) {
         System.out.println("hej");
     }
-    public void findPath(Map<String,String[]> neighborMap, String s, String t) {
+    public int findPath(Map<String,String[]> neighborMap, String s, String t) {
         HashMap<String,String> pred = new HashMap<String,String>();
         HashSet<String> visited = new HashSet<String>();
 
@@ -33,12 +33,27 @@ class Main {
                     pred.put(neighbor,currentNode);
                     //if w = t then
                     if (neighbor.equals(t)) {
-                        System.out.println("found path s - t");
-                        return;
+                        System.out.println("found path "+s+" - "+t);
+                        return backTrack(pred,s,t);
                     }
                 }
             }
         }
         System.out.println("found no path s - t");
+        return -1;
+
+    }
+    private int backTrack(Map<String, String> pred, String s, String t)  {
+        int steps = 0;
+        String currentNode = t;
+        while (true) {
+            if (pred.containsKey(currentNode)) {
+                currentNode = pred.get(currentNode);
+                steps++;
+
+            } else {
+                return steps;
+            }
+        }
     }
 }

@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,7 +36,9 @@ public class mainTest {
         dataStructure.put("f", fNeighbors);
 
         Main m = new Main();
-        m.findPath(dataStructure,"a","f");
+        int steps = m.findPath(dataStructure,"a","f");
+        Assert.assertEquals("Incorrect path length", 3, steps);
+
 
     }
 }

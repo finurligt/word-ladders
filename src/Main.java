@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Main {
     public int findPath(Map<String,String[]> neighborMap, String s, String t) {
@@ -30,13 +32,13 @@ class Main {
                     pred.put(neighbor,currentNode);
                     //if w = t then
                     if (neighbor.equals(t)) {
-                        System.err.println("found path "+s+" - "+t);
+                        //System.err.println("found path "+s+" - "+t);
                         return backTrack(pred,s,t);
                     }
                 }
             }
         }
-        System.err.println("found no path s - t");
+        //System.err.println("found no path s - t");
         return -1;
 
     }
@@ -53,5 +55,16 @@ class Main {
                 return steps;
             }
         }
+    }
+
+    public static boolean shouldBeChildOf(String p, String c) {
+
+        String copyOfChild = String.valueOf(c);
+
+        for(char ac : p.substring(1).toCharArray()) {
+            copyOfChild = copyOfChild.replace(String.valueOf(ac), "");
+        }
+
+        return copyOfChild.length() == 1;
     }
 }

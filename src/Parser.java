@@ -18,8 +18,9 @@ public class Parser {
             lines.add(sc.nextLine());
         }
 
-        Optional<String> result = lines.stream().reduce(String::concat);
+        Optional<String> result = lines.stream().reduce( (s1,s2) -> s1+"\n"+s2);
         return result.orElse("");
+
     }
 
 }

@@ -3,6 +3,17 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 class Main {
+
+    public static void main(String[] args) {
+        if(args.length!=2) {
+            System.out.println("Wrong number of arguments. please use this program as descipted below:");
+            System.out.println("\'java Main <word list file> <paths to find>\'");
+            return;
+        }
+
+        String wordList = args[0]
+    }
+
     public int findPath(Map<String,String[]> neighborMap, String s, String t) {
         HashMap<String,String> pred = new HashMap<String,String>();
         HashSet<String> visited = new HashSet<String>();

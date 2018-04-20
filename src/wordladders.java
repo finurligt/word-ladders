@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class wordladders {
+class Main {
 
     public static void main(String[] args) {
         if(args.length!=2) {
@@ -24,6 +24,7 @@ class wordladders {
         try {
             words = getStringFromStream(new FileInputStream(wordList));
             path = getStringFromStream(new FileInputStream(pathList));
+
             for (String parent : words) {
                 neighbors.put(parent, new LinkedList<>());
                 for (String child : words) {
@@ -108,7 +109,7 @@ class wordladders {
             if (pred.containsKey(currentNode)) {
                 currentNode = pred.get(currentNode);
                 steps++;
-
+                //System.err.println(currentNode);
             } else {
                 return steps;
             }
